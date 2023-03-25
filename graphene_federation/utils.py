@@ -84,8 +84,9 @@ def get_attributed_fields(attribute: str, schema: Schema):
             type_.graphene_type._meta, UnionOptions
         ):
             continue
-        for field in list(type_.graphene_type._meta.fields):
-            if getattr(getattr(type_.graphene_type, field, None), attribute, False):
-                fields[type_name] = type_.graphene_type
-                continue
+        if hasattr(type_.graphene_type._meta, "fields"):
+            for field in list(type_.graphene_type._meta.fields):
+                if getattr(getattr(type_.graphene_type, field, None), attribute, False):
+                    fields[type_name] = type_.graphene_type
+                    continue
     return fields
