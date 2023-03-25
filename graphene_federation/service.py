@@ -20,6 +20,8 @@ from .entity import get_entities
 from .tag import get_tagged_fields
 from .utils import field_name_to_type_attribute, type_attribute_to_field_name
 
+from types import List
+
 
 class MonoFieldType:
     """
@@ -31,7 +33,7 @@ class MonoFieldType:
         self.fields = {name: field}
 
 
-def convert_fields(schema: Schema, fields: list[str]) -> str:
+def convert_fields(schema: Schema, fields: List[str]) -> str:
     get_field_name = type_attribute_to_field_name(schema)
     return " ".join([get_field_name(field) for field in fields])
 
