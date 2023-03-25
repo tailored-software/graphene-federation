@@ -20,7 +20,7 @@ from .entity import get_entities
 from .tag import get_tagged_fields
 from .utils import field_name_to_type_attribute, type_attribute_to_field_name
 
-from types import List
+from typing import List
 
 
 class MonoFieldType:
